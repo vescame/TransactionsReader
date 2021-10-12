@@ -60,7 +60,6 @@ void print_transactions(transaction_list_t *list) {
   if (list == NULL) return;
   node_t *actual = list->head;
   while (actual != NULL) {
-    printf("transaction: %.2f\n", actual->element->value);
     actual = actual->next;
   }
 }
