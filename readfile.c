@@ -5,6 +5,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#define BUFLEN 1024
+
 struct freader
 {
   int fd;
@@ -29,15 +31,19 @@ char *read_transactions(char *fname)
 
   file_reader_t reader = { .fd = fd };
 
-  char *contents = (char *) malloc(sizeof(char) * 4);
-  char *c = malloc(sizeof(char));
-  while (read(reader.fd, c, sizeof(char)) > 0) {
-    strncat(contents, c, 1);
+  char buf[BUFLEN];
+  char *c = calloc(sizeof(char *), sizeof(char *));
+  while (read(reader.fd, c, sizeof(char *)) > 0) {
+    strncat(buf, c, sizeof(char *));
   }
 
   free(c);
 
   close(reader.fd);
+
+  unsigned long len = strlen(buf);
+  char *contents = malloc(len);
+  strncpy(contents, buf, len);
 
   return contents;
 }
