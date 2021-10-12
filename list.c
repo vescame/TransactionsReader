@@ -64,7 +64,7 @@ void print_transactions(transaction_list_t *list) {
   }
 }
 
-void sumarize_transactions(transaction_list_t *list) {
+void summarize_transactions(transaction_list_t *list) {
   float sum = 0.0;
   node_t *actual = list->head;
   while (actual != NULL) {
@@ -73,5 +73,4 @@ void sumarize_transactions(transaction_list_t *list) {
   }
     printf("Sum of: %.2f\n", sum);
 }
-
 

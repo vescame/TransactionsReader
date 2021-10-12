@@ -1,6 +1,7 @@
 #include "readfile.c"
 #include "list.c"
 #include <stdio.h>
+#include <string.h>
 
 transaction_list_t *split_transactions(const char *contents) {
   if (contents == NULL) return NULL;
@@ -30,7 +31,7 @@ int main(int argc, char** args) {
   transaction_list_t *tlist = split_transactions(contents);
 
   print_transactions(tlist);
-  sumarize_transactions(tlist);
+  summarize_transactions(tlist);
 
   free(tlist);
   free(contents);
